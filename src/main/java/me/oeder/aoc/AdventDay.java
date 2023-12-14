@@ -5,15 +5,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public abstract class AdventDay {
-	
 	private int year;
 	private int day;
-	
-	public AdventDay(int year, int day) {
-		this.year = year;
-		this.day = day;
-	}
 	
 	public void solve() {
 		List<String> lines = getLines();
@@ -22,7 +19,7 @@ public abstract class AdventDay {
 		log("Part 2 Solution:\n" + solvePart2(lines));
 	}
 	
-	public List<String> getLines() {
+	private List<String> getLines() {
 		List<String> lines = new ArrayList<>();
 		try {
 			lines.addAll(Files.readAllLines(Paths.get(String.format("src/main/resources/%d/Day%s.txt", year, String.format("%02d", day)))));

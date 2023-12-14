@@ -6,7 +6,7 @@ import java.util.List;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import me.oeder.aoc.graph.Coord;
+import me.oeder.aoc.common.Coord;
 
 public class Day10 extends AdventDay2023 {
 	
