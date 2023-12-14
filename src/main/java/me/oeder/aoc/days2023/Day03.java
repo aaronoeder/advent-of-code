@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import me.oeder.aoc.graph.Coord;
+import me.oeder.aoc.common.Coord;
+import me.oeder.aoc.util.InputUtils;
 
 public class Day03 extends AdventDay2023 {
 	
@@ -26,20 +27,11 @@ public class Day03 extends AdventDay2023 {
 	private int getSum(List<String> lines, boolean part2) {
 		int sum = 0;
 		
-		// Load input file into 2D array
-		String[][] arr = new String[lines.size()][lines.get(0).length()];
-		for (int i = 0; i < lines.size(); i++) {
-			String line = lines.get(i);
-			for (int j = 0; j < line.length(); j++) {
-				arr[i][j] = line.substring(j, j + 1);
-			}
-		}
-		
+		String[][] grid = InputUtils.loadLinesIntoGrid(lines);
 		Map<Coord, List<Integer>> gears = new HashMap<>();
-		
-		for (int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < grid.length; i++) {
 			int colIndex = 0;
-			while (colIndex < arr.length) {
+			while (colIndex < grid.length) {
 				String num = "";
 				boolean isPartNumber = false;
 				Coord gearCoord = null;
@@ -48,16 +40,16 @@ public class Day03 extends AdventDay2023 {
 				// At each point in this process, we also check to see if a given digit is adjacent to a symbol
 				boolean done = false;
 				while (!done) {
-					if (colIndex == arr.length) {
+					if (colIndex == grid.length) {
 						done = true;
 					} else {
-						char ch = arr[i][colIndex].charAt(0);
+						char ch = grid[i][colIndex].charAt(0);
 						if (Character.isDigit(ch)) {
 							num += ch;
-							Coord adjacentSymbolCoord = getAdjacentSymbolCoord(arr, i, colIndex);
+							Coord adjacentSymbolCoord = getAdjacentSymbolCoord(grid, i, colIndex);
 							if (adjacentSymbolCoord != null) {
 								isPartNumber = true;
-								if (arr[adjacentSymbolCoord.getRow()][adjacentSymbolCoord.getCol()].equals("*")) {
+								if (grid[adjacentSymbolCoord.getRow()][adjacentSymbolCoord.getCol()].equals("*")) {
 									gearCoord = adjacentSymbolCoord;
 								}
 							}
@@ -91,16 +83,16 @@ public class Day03 extends AdventDay2023 {
 		return sum;
 	}
 	
-	private Coord getAdjacentSymbolCoord(String[][] arr, int i, int j) {
+	private Coord getAdjacentSymbolCoord(String[][] grid, int i, int j) {
 		for (int x = -1; x <= 1; x++) {
 			for (int y = -1; y <= 1; y++) {
 				if (x == 0 && y == 0) {
 					continue;
 				}
-				if (i + x < 0 || i + x > arr.length - 1 || j + y < 0 || j + y > arr[i].length - 1) {
+				if (i + x < 0 || i + x > grid.length - 1 || j + y < 0 || j + y > grid[i].length - 1) {
 					continue;
 				}
-				if (isSymbol(arr[i + x][j + y])) {
+				if (isSymbol(grid[i + x][j + y])) {
 					return new Coord(i + x, j + y);
 				}
 			}

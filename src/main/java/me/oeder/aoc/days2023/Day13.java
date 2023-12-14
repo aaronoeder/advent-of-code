@@ -12,7 +12,6 @@ public class Day13 extends AdventDay2023 {
 	@Override
 	public Object solvePart1(List<String> lines) {
 		return getSum(lines, false);
-		
 	}
 	
 	@Override

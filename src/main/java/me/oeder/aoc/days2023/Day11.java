@@ -3,7 +3,7 @@ package me.oeder.aoc.days2023;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.oeder.aoc.graph.Coord;
+import me.oeder.aoc.common.Coord;
 
 public class Day11 extends AdventDay2023 {
 	
