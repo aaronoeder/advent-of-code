@@ -39,7 +39,7 @@ public class Day14 extends AdventDay2023 {
 				if (seen.containsKey(stringifiedGrid)) {
 					cycleLength = currentCycle - seen.get(stringifiedGrid);
 				} else {
-					seen.put(stringifyGrid(copy), currentCycle);
+					seen.put(stringifiedGrid, currentCycle);
 					currentCycle++;
 				}
 			}
