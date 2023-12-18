@@ -2,6 +2,7 @@ package me.oeder.aoc.days2023;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import lombok.Data;
@@ -69,43 +70,29 @@ public class Day10 extends AdventDay2023 {
 	}
 	
 	private TileCoord getNextStepInPath(List<TileCoord> visited, Tile[][] grid, TileCoord cur) {
-		for (TileCoord TileCoord : cur.getNeighbors(grid)) {
-			if (visited.contains(TileCoord)) {
+		for (TileCoord tileCoord : cur.getNeighbors(grid)) {
+			if (visited.contains(tileCoord)) {
 				continue;
 			}
-			return TileCoord;
+			return tileCoord;
 		}
 		return null;
 	}
 	
 	private int getEnclosedTileCount(Tile[][] grid, List<TileCoord> path) {
-		int enclosedTileCount = 0;
-		for (int i = 0; i < grid.length; i++) {
-			int crossedVerticalTiles = 0;
-			Tile cornerTile = null;
-			for (int j = 0; j < grid[0].length; j++) {
-				if (path.contains(new TileCoord(i, j, grid))) {
-					Tile curTile = grid[i][j];
-					if (curTile == Tile.V) {
-						crossedVerticalTiles++;
-					} else if (curTile != Tile.H) {
-						if (cornerTile != null) {
-							if (cornerTile == Tile.L && curTile == Tile.SEVEN) {
-								crossedVerticalTiles++;
-							} else if (cornerTile == Tile.F && curTile == Tile.J) {
-								crossedVerticalTiles++;
-							}
-							cornerTile = null;
-						} else {
-							cornerTile = curTile;
-						}
-					} 
-				} else if (crossedVerticalTiles % 2 == 1) { // If we've crossed an odd number of vertical tiles, the current tile must be enclosed by the loop
-					enclosedTileCount++;
-				}
-			}
+		// Find total area using the Shoelace formula (this requires the boundary points to be arranged in counter-clockwise order first)
+		Collections.reverse(path);
+		double totalArea = 0;
+		for (int i = 0; i < path.size(); i++) {
+			Coord c1 = path.get(i);
+			Coord c2 = path.get(i == path.size() - 1 ? 0 : i + 1);
+			totalArea += 0.5 * (c1.getRow() * c2.getCol() - c2.getRow() * c1.getCol());
 		}
-		return enclosedTileCount;
+		
+		// Find interior area using Pick's theorem
+		// Pick's theorem states: A = i + b/2 - 1, where A is the total area, b is the # of boundary points and i is the # of interior points
+		// We need to solve for i: i = A + 1 - b/2
+		return (int)(totalArea + 1 - (path.size() / 2));
 	}
 	
 	@Data
