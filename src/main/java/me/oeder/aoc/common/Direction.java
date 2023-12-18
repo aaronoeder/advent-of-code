@@ -21,4 +21,12 @@ public enum Direction {
 	public int getColDiff() {
 		return colDiff;
 	}
+	
+	public Direction getDirectionToLeft() {
+		return Direction.values()[(ordinal() + 1) % Direction.values().length];
+	}
+	
+	public Direction getDirectionToRight() {
+		return Direction.values()[(ordinal() + 3) % Direction.values().length];
+	}
 }
