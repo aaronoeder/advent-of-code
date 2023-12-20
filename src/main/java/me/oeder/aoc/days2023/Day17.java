@@ -19,15 +19,15 @@ public class Day17 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getMin(lines, false);
+		return getMin(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getMin(lines, true);
+		return getMin(lines, Part.TWO);
 	}
 	
-	private int getMin(List<String> lines, boolean part2) {
+	private int getMin(List<String> lines, Part part) {
 		int[][] grid = new int[lines.size()][lines.get(0).length()];
 		for (int i = 0; i < lines.size(); i++) {
 			String line = lines.get(i);
@@ -36,8 +36,8 @@ public class Day17 extends AdventDay2023 {
 			}
 		}
 		
-		int minMovementInSameDirection = (part2 ? 4 : 0);
-		int maxMovementInSameDirection = (part2 ? 10 : 3);
+		int minMovementInSameDirection = (part == Part.ONE ? 0 : 4);
+		int maxMovementInSameDirection = (part == Part.ONE ? 3 : 10);
 		
 		// We don't want to count the heat loss of the starting block (hence the "0" as the third argument)
 		// We also have to consider going both south and east from this starting block

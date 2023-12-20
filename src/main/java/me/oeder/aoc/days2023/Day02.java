@@ -10,15 +10,15 @@ public class Day02 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getSum(lines, false);
+		return getSum(lines, Part.ONE);
 	}
 
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getSum(lines, true);
+		return getSum(lines, Part.TWO);
 	}
 	
-	private int getSum(List<String> lines, boolean part2) {
+	private int getSum(List<String> lines, Part part) {
 		int sum = 0;
 		
 		for (String line : lines) {
@@ -59,9 +59,9 @@ public class Day02 extends AdventDay2023 {
 				}
 			}
 			
-			if (!part2 && valid) {
+			if (part == Part.ONE && valid) {
 				sum += gameNumber;
-			} else if (part2) {
+			} else if (part == Part.TWO) {
 				sum += (maxRed * maxGreen * maxBlue);
 			}
 		}

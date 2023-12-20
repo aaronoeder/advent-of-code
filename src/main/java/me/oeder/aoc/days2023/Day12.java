@@ -19,20 +19,21 @@ public class Day12 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getSum(lines, false);
+		return getSum(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getSum(lines, true);
+		return getSum(lines, Part.TWO);
 	}
 	
-	private long getSum(List<String> lines, boolean part2) {
+	private long getSum(List<String> lines, Part part) {
+		int replications = (part == Part.ONE ? 1 : 5);
 		long sum = 0;
 		for (String line : lines) {
 			String[] parts = line.split(" ");
-			String record = String.join("?", Collections.nCopies(part2 ? 5 : 1, parts[0]));
-			List<Integer> nums = getIntegerList(part2 ? 5 : 1, parts[1].split(","));
+			String record = String.join("?", Collections.nCopies(replications, parts[0]));
+			List<Integer> nums = getIntegerList(replications, parts[1].split(","));
 			sum += getArrangementCount(record, nums);
 		}
 		return sum;

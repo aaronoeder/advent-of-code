@@ -13,21 +13,21 @@ public class Day15 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getSum(lines, false);
+		return getSum(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getSum(lines, true);
+		return getSum(lines, Part.TWO);
 	}
 	
-	private int getSum(List<String> lines, boolean part2) {
+	private int getSum(List<String> lines, Part part) {
 		int sum = 0;
 		Map<Integer, List<String>> boxes = new HashMap<>();
 		String[] steps = lines.get(0).split(",");
 		for (String step : steps) {
 			String valueToHash = step;
-			if (part2) {
+			if (part == Part.TWO) {
 				if (step.contains("-")) {
 					valueToHash = step.split("-")[0];
 				} else if (step.contains("=")) {
@@ -42,7 +42,9 @@ public class Day15 extends AdventDay2023 {
 				hash %= 256;
 			}
 			
-			if (part2) {
+			if (part == Part.ONE) {
+				sum += hash;
+			} else if (part == Part.TWO) {
 				if (step.contains("-")) {
 					if (!boxes.containsKey(hash)) {
 						continue;
@@ -70,13 +72,11 @@ public class Day15 extends AdventDay2023 {
 					if (!found) {
 						boxContents.add(step);
 					}
-				}
-			} else {
-				sum += hash;
+				}				
 			}
 		}
 		
-		if (part2) {
+		if (part == Part.TWO) {
 			for (Map.Entry<Integer, List<String>> entry : boxes.entrySet()) {
 				int boxId = entry.getKey() + 1;
 				for (int i = 0; i < entry.getValue().size(); i++) {

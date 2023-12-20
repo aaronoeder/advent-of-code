@@ -17,15 +17,15 @@ public class Day18 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getVolume(lines, false);
+		return getVolume(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getVolume(lines, true);
+		return getVolume(lines, Part.TWO);
 	}
 	
-	private long getVolume(List<String> lines, boolean part2) {
+	private long getVolume(List<String> lines, Part part) {
 		Map<String, Direction> directionMapping = new HashMap<>();
 		directionMapping.put("R", Direction.E);
 		directionMapping.put("D", Direction.S);
@@ -46,16 +46,16 @@ public class Day18 extends AdventDay2023 {
 			Direction dir = null;
 			int amount = 0;
 			
-			if (part2) {
+			if (part == Part.ONE) {
+				dir = directionMapping.get(parts[0]);
+				amount = Integer.parseInt(parts[1]);
+			} else if (part == Part.TWO) {
 				String hex = parts[2].substring(2, parts[2].length() - 1);
 				String firstFiveHexDigits = hex.substring(0, hex.length() - 1);
 				String lastHexDigit = hex.substring(hex.length() - 1);
 				
 				dir = directionMapping.get(lastHexDigit);
 				amount = Integer.parseInt(firstFiveHexDigits, 16);
-			} else {
-				dir = directionMapping.get(parts[0]);
-				amount = Integer.parseInt(parts[1]);
 			}
 			
 			Coord lastBoundaryPoint = boundaryPoints.get(boundaryPoints.size() - 1);

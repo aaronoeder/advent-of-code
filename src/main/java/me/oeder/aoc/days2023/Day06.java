@@ -13,7 +13,7 @@ public class Day06 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		List<Long> ways = getWays(lines, false);
+		List<Long> ways = getWays(lines, Part.ONE);
 		
 		int sum = 1;
 		for (long way : ways) {
@@ -24,12 +24,12 @@ public class Day06 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getWays(lines, true).get(0);
+		return getWays(lines, Part.TWO).get(0);
 	}
 	
-	private List<Long> getWays(List<String> lines, boolean part2) {
-		List<Long> times = getLongList(lines, 0, part2);
-		List<Long> distances = getLongList(lines, 1, part2);
+	private List<Long> getWays(List<String> lines, Part part) {
+		List<Long> times = getLongList(lines, 0, part);
+		List<Long> distances = getLongList(lines, 1, part);
 		List<Long> ways = new ArrayList<>();
 	
 		for (int i = 0; i < times.size(); i++) {
@@ -48,17 +48,17 @@ public class Day06 extends AdventDay2023 {
 		return ways;
 	}
 	
-	private List<Long> getLongList(List<String> lines, int i, boolean part2) {
+	private List<Long> getLongList(List<String> lines, int i, Part part) {
 		String[] parts = null;
 		
-		if (!part2) {
+		if (part == Part.ONE) {
 			parts = lines.get(i).split(":")[1].split(" ");
-		} else {
+		} else if (part == Part.TWO) {
 			parts = new String[] { lines.get(i).split(":")[1].replace(" ", "") };
 		}
 		
 		return Arrays.asList(parts).stream()
-				.filter(part -> !part.trim().equals(""))
+				.filter(p -> !p.trim().equals(""))
 				.map(s -> Long.parseLong(s))
 				.collect(Collectors.toList());
 	}

@@ -18,15 +18,15 @@ public class Day07 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getSum(lines, false);
+		return getSum(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getSum(lines, true);
+		return getSum(lines, Part.TWO);
 	}
 	
-	private int getSum(List<String> lines, boolean part2) {
+	private int getSum(List<String> lines, Part part) {
 		List<Hand> hands = new ArrayList<>();
 		for (int i = 0; i < lines.size(); i++) {
 			String[] parts = lines.get(i).split(" ");
@@ -34,7 +34,7 @@ public class Day07 extends AdventDay2023 {
 		}
 		
 		int sum = 0;
-		Collections.sort(hands, (h1, h2) -> compareHands(h1.getCards(), h2.getCards(), part2));
+		Collections.sort(hands, (h1, h2) -> compareHands(h1.getCards(), h2.getCards(), part));
 		for (int i = 0; i < hands.size(); i++) {
 			int score = hands.size() - i;
 			int bet = hands.get(i).getBet();
@@ -51,7 +51,8 @@ public class Day07 extends AdventDay2023 {
 		private int bet;
 	}
 	
-	private int compareHands(String hand1, String hand2, boolean includeJokers) {
+	private int compareHands(String hand1, String hand2, Part part) {
+		boolean includeJokers = (part == Part.TWO);
 		int hs1 = getHandStrength(hand1, includeJokers);
 		int hs2 = getHandStrength(hand2, includeJokers);
 		if (hs1 != hs2) {

@@ -17,15 +17,15 @@ public class Day19 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getAnswer(lines, false);
+		return getAnswer(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getAnswer(lines, true);
+		return getAnswer(lines, Part.TWO);
 	}
 	
-	private long getAnswer(List<String> lines, boolean part2) {
+	private long getAnswer(List<String> lines, Part part) {
 		Map<String, Rule> rulesMap = new LinkedHashMap<>();
 		List<Input> inputs = new ArrayList<>();
 		
@@ -61,7 +61,7 @@ public class Day19 extends AdventDay2023 {
 			}
 		}
 		
-		if (!part2) {
+		if (part == Part.ONE) {
 			return getSumOfRatingNumbers(rulesMap, inputs);
 		} else {
 			Map<String, Range> rangesMap = new HashMap<>();

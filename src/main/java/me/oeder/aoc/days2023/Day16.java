@@ -18,21 +18,23 @@ public class Day16 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getTileCount(lines, false);
+		return getTileCount(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getTileCount(lines, true);
+		return getTileCount(lines, Part.TWO);
 	}
 	
-	private int getTileCount(List<String> lines, boolean part2) {
+	private int getTileCount(List<String> lines, Part part) {
 		String[][] grid = InputUtils.loadLinesIntoGrid(lines);
 		
 		int max = Integer.MIN_VALUE;
 		
 		List<Beam> startBeams = new ArrayList<>();
-		if (part2) {
+		if (part == Part.ONE) {
+			startBeams.add(new Beam(new Coord(0, 0), getInitialDirection(grid[0][0], Direction.E)));
+		} else if (part == Part.TWO) {
 			for (int i = 0; i < grid.length; i++) {
 				startBeams.add(new Beam(new Coord(i, 0), getInitialDirection(grid[i][0], Direction.W)));
 				startBeams.add(new Beam(new Coord(i, grid[0].length - 1), getInitialDirection(grid[i][grid[0].length - 1], Direction.E)));
@@ -42,8 +44,6 @@ public class Day16 extends AdventDay2023 {
 				startBeams.add(new Beam(new Coord(0, j), getInitialDirection(grid[0][j], Direction.S)));
 				startBeams.add(new Beam(new Coord(grid.length - 1, j), getInitialDirection(grid[grid.length - 1][j], Direction.N)));
 			}
-		} else {
-			startBeams.add(new Beam(new Coord(0, 0), getInitialDirection(grid[0][0], Direction.E)));
 		}
 		
 		for (Beam startBeam : startBeams) {

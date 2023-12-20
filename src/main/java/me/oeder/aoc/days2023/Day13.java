@@ -11,15 +11,15 @@ public class Day13 extends AdventDay2023 {
 	
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getSum(lines, false);
+		return getSum(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getSum(lines, true);
+		return getSum(lines, Part.TWO);
 	}
 	
-	private int getSum(List<String> lines, boolean part2) {
+	private int getSum(List<String> lines, Part part) {
 		List<List<String>> mirrors = new ArrayList<>();
 		int mirrorsIndex = 0;
 		for (String line : lines) {
@@ -53,7 +53,7 @@ public class Day13 extends AdventDay2023 {
 			int newV = vertical;
 			int newH = horizontal;
 			
-			if (part2) {
+			if (part == Part.TWO) {
 				for (int a = 0; a < arr.length; a++) {
 					for (int b = 0; b < arr[0].length; b++) {
 						String val = arr[a][b];
@@ -81,18 +81,18 @@ public class Day13 extends AdventDay2023 {
 				}
 			}
 			
-			if (part2) {
-				if (newV != -1 && newV != vertical) {
-					sum += newV;
-				}
-				if (newH != -1 && newH != horizontal) {
-					sum += newH * 100;
-				}
-			} else {
+			if (part == Part.ONE) {
 				if (newV != -1) {
 					sum += newV;
 				}
 				if (newH != -1) {
+					sum += newH * 100;
+				}
+			} else if (part == Part.TWO) {
+				if (newV != -1 && newV != vertical) {
+					sum += newV;
+				}
+				if (newH != -1 && newH != horizontal) {
 					sum += newH * 100;
 				}
 			}
