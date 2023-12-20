@@ -13,15 +13,15 @@ public class Day11 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getSum(lines, false);
+		return getSum(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getSum(lines, true);
+		return getSum(lines, Part.TWO);
 	}
 	
-	private long getSum(List<String> lines, boolean part2) {
+	private long getSum(List<String> lines, Part part) {
 		List<Integer> emptyRowIndices = getEmptyRowIndices(lines);
 		List<Integer> emptyColIndices = getEmptyColIndices(lines);
 		List<Coord> coords = new ArrayList<>();
@@ -30,7 +30,7 @@ public class Day11 extends AdventDay2023 {
 			for (int j = 0; j < line.length(); j++) {
 				String val = line.substring(j, j + 1);
 				if (val.equals("#")) {
-					int additionalEmptyCount = (part2 ? 999999 : 1);
+					int additionalEmptyCount = (part == Part.ONE ? 1 : 999999);
 					int row = i;
 					int col = j;
 					for (int emptyRowIndex : emptyRowIndices) {

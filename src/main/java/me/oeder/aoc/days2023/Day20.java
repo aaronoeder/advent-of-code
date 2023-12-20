@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import me.oeder.aoc.util.MathUtils;
 
 public class Day20 extends AdventDay2023 {
 	
@@ -141,11 +142,7 @@ public class Day20 extends AdventDay2023 {
 		if (part == Part.ONE) {
 			return lowPulseCount * highPulseCount;
 		} else {
-			long total = 1;
-			for (Long cycleLength : cycleLengths.values()) {
-				total *= cycleLength;
-			}
-			return total;
+			return MathUtils.lcm(cycleLengths.values());
 		}
 	}
 	

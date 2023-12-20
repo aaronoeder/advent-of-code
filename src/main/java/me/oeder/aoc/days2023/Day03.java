@@ -16,15 +16,15 @@ public class Day03 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getSum(lines, false);
+		return getSum(lines, Part.ONE);
 	}
 
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getSum(lines, true);
+		return getSum(lines, Part.TWO);
 	}
 	
-	private int getSum(List<String> lines, boolean part2) {
+	private int getSum(List<String> lines, Part part) {
 		int sum = 0;
 		
 		String[][] grid = InputUtils.loadLinesIntoGrid(lines);
@@ -66,13 +66,13 @@ public class Day03 extends AdventDay2023 {
 					colIndex++;
 				}
 				
-				if (!part2 && isPartNumber) {
+				if (part == Part.ONE && isPartNumber) {
 					sum += Integer.parseInt(num);
 				}
 			}
 		}
 		
-		if (part2) {
+		if (part == Part.TWO) {
 			for (Map.Entry<Coord, List<Integer>> entry : gears.entrySet()) {
 				if (entry.getValue().size() == 2) {
 					sum += (entry.getValue().get(0) * entry.getValue().get(1));

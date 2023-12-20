@@ -18,15 +18,15 @@ public class Day05 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getMin(lines, false);
+		return getMin(lines, Part.ONE);
 	}
 
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getMin(lines, true);
+		return getMin(lines, Part.TWO);
 	}
 	
-	private long getMin(List<String> lines, boolean part2) {
+	private long getMin(List<String> lines, Part part) {
 		String seedLine = lines.get(0);
 		String[] seedLineParts = seedLine.split(": ");
 		String[] seedStrings = seedLineParts[1].split(" ");
@@ -63,7 +63,7 @@ public class Day05 extends AdventDay2023 {
 		}
 		
 		long min = Integer.MAX_VALUE;
-		if (!part2) {
+		if (part == Part.ONE) {
 			for (long seed : seeds) {
 				long val = seed;
 				for (String title : titles) {
@@ -73,7 +73,7 @@ public class Day05 extends AdventDay2023 {
 					min = val;
 				}
 			}
-		} else {
+		} else if (part == Part.TWO) {
 			long i = 0;
 			while (true) {
 				long val = i;

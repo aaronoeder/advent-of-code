@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import me.oeder.aoc.util.MathUtils;
 
 public class Day08 extends AdventDay2023 {
 	
@@ -19,15 +20,15 @@ public class Day08 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getSteps(lines, false);
+		return getSteps(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getSteps(lines, true);
+		return getSteps(lines, Part.TWO);
 	}
 	
-	private long getSteps(List<String> lines, boolean part2) {
+	private long getSteps(List<String> lines, Part part) {
 		String instructions = lines.get(0);
 		
 		Map<String, Node> nodeMap = new HashMap<>();
@@ -42,7 +43,8 @@ public class Day08 extends AdventDay2023 {
 			}
 		}
 		
-		List<String> startingNodeNames = nodeMap.keySet().stream().filter(nodeName -> nodeName.endsWith(part2 ? "A": "AAA")).collect(Collectors.toList());
+		String ending = (part == Part.ONE ? "AAA": "A");
+		List<String> startingNodeNames = nodeMap.keySet().stream().filter(nodeName -> nodeName.endsWith(ending)).collect(Collectors.toList());
 		
 		Map<String, String> currentNodes = new HashMap<>();
 		Map<String, Long> nodeCycleLengths = new HashMap<>();
@@ -73,7 +75,7 @@ public class Day08 extends AdventDay2023 {
 			}
 			steps++;
 		}
-		return lcm(new ArrayList<>(nodeCycleLengths.values()));
+		return MathUtils.lcm(new ArrayList<>(nodeCycleLengths.values()));
 	}
 	
 	@Data
@@ -82,13 +84,5 @@ public class Day08 extends AdventDay2023 {
 		private String name;
 		private String left;
 		private String right;
-	}
-
-	private long lcm(List<Long> numbers) {
-	    return numbers.stream().reduce(1L, (x, y) -> x * (y / gcd(x, y)));
-	}
-	
-	private long gcd(long x, long y) {
-	    return (y == 0) ? x : gcd(y, x % y);
 	}
 }

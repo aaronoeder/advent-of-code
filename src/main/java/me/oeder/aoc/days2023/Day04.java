@@ -16,21 +16,27 @@ public class Day04 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		int sum = 0;
-		for (String line : lines) {
-			int matches = getMatches(line);
-			if (matches > 0) {
-				sum += Math.pow(2, matches - 1);
-			}
-		}
-		return sum;
+		return getSum(lines, Part.ONE);
 	}
 
 	@Override
 	public Object solvePart2(List<String> lines) {
+		return getSum(lines, Part.TWO);
+	}
+	
+	private int getSum(List<String> lines, Part part) {
 		int sum = 0;
-		for (int i = 0; i < lines.size(); i++) {
-			sum += getNumberOfCardsWon(lines, i);
+		if (part == Part.ONE) {
+			for (String line : lines) {
+				int matches = getMatches(line);
+				if (matches > 0) {
+					sum += Math.pow(2, matches - 1);
+				}
+			}
+		} else if (part == Part.TWO) {
+			for (int i = 0; i < lines.size(); i++) {
+				sum += getNumberOfCardsWon(lines, i);
+			}
 		}
 		return sum;
 	}

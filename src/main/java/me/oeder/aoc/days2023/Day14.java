@@ -15,17 +15,19 @@ public class Day14 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getLoad(lines, false);
+		return getLoad(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getLoad(lines, true);
+		return getLoad(lines, Part.TWO);
 	}
 	
-	private int getLoad(List<String> lines, boolean part2) {
+	private int getLoad(List<String> lines, Part part) {
 		String[][] grid = InputUtils.loadLinesIntoGrid(lines);
-		if (part2) {
+		if (part == Part.ONE) {
+			tiltGrid(grid, Direction.N);
+		} else if (part == Part.TWO) {
 			String[][] copy = getDeepCopyOfGrid(grid);
 			Map<String, Long> seen = new HashMap<>();
 			long currentCycle = 1;
@@ -50,8 +52,6 @@ public class Day14 extends AdventDay2023 {
 					tiltGrid(grid, d);
 				}
 			}
-		} else {
-			tiltGrid(grid, Direction.N);
 		}
 		
 		return getLoadOfGrid(grid);

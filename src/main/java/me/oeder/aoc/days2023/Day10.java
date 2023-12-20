@@ -17,15 +17,22 @@ public class Day10 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		Tile[][] grid = getGrid(lines);
-		return getPath(grid).size() / 2;
+		return getAnswer(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
+		return getAnswer(lines, Part.TWO);
+	}
+	
+	private int getAnswer(List<String> lines, Part part) {
 		Tile[][] grid = getGrid(lines);
 		List<TileCoord> path = getPath(grid);
-		return getEnclosedTileCount(grid, path);
+		if (part == Part.ONE) {
+			return path.size() / 2;
+		} else {
+			return getEnclosedTileCount(grid, path);
+		}
 	}
 	
 	private Tile[][] getGrid(List<String> lines) {
@@ -171,6 +178,8 @@ public class Day10 extends AdventDay2023 {
 						neighbors.add(east);
 					}
 					break;
+				case S:
+					break; // Should never happen
 			}
 			
 			return neighbors;

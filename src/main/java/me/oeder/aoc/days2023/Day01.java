@@ -12,17 +12,17 @@ public class Day01 extends AdventDay2023 {
 
 	@Override
 	public Object solvePart1(List<String> lines) {
-		return getSum(lines, false);
+		return getSum(lines, Part.ONE);
 	}
 	
 	@Override
 	public Object solvePart2(List<String> lines) {
-		return getSum(lines, true);
+		return getSum(lines, Part.TWO);
 	}
 	
-	private int getSum(List<String> lines, boolean part2) {
+	private int getSum(List<String> lines, Part part) {
 		Map<String, Integer> digitMap = new LinkedHashMap<>();
-		if (part2) {
+		if (part == Part.TWO) {
 			digitMap.put("one", 1);
 			digitMap.put("two", 2);
 			digitMap.put("three", 3);
