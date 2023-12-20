@@ -12,11 +12,17 @@ public abstract class AdventDay {
 	private int year;
 	private int day;
 	
+	public static enum Part {
+		ONE, TWO;
+	}
+	
 	public void solve() {
 		List<String> lines = getLines();
+		log(String.format("Year %d, Day %d", year, day));
 		log("Part 1 Solution:\n" + solvePart1(lines));
 		log("\n");
 		log("Part 2 Solution:\n" + solvePart2(lines));
+		log("\n");
 	}
 	
 	private List<String> getLines() {
@@ -33,7 +39,7 @@ public abstract class AdventDay {
 	public abstract Object solvePart1(List<String> lines);
 	public abstract Object solvePart2(List<String> lines);
 	
-	public void log(Object obj) {
+	public static void log(Object obj) {
 		System.out.println(obj);
 	}
 }
