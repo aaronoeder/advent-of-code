@@ -2,7 +2,7 @@ package me.oeder.aoc;
 
 public class AdventRunner {
 	private static final int YEAR = 2023;
-	private static final int DAY = 22;
+	private static final int DAY = 24;
 	private static final boolean RUN_FULL_YEAR = false;
 	
 	private static AdventDay getAdventDay(int day) throws Exception {
