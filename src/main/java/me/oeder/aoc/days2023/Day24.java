@@ -58,7 +58,6 @@ public class Day24 extends AdventDay2023 {
 			 * My approach for solving the system of equations was to plug it into Mathematica and let it do all the work.
 			 * The resulting position values (x, y, z) are then hardcoded here and the sum is calculated.
 			 */
-			log(getMathematicaFormula(hailstones));
 			long x = 349084334634500L;
 			long y = 252498326441926L;
 			long z = 121393830576314L;
@@ -103,16 +102,5 @@ public class Day24 extends AdventDay2023 {
 		boolean validY2 = (h2.getVelocity().getY() > 0 && y0 > h2.getPosition().getY()) || (h2.getVelocity().getY() < 0 && y0 < h2.getPosition().getY());
 		
 		return x0 >= min && x0 <= max && y0 >= min && y0 <= max && (validX1 && validY1 && validX2 && validY2);
-	}
-	
-	private String getMathematicaFormula(List<Hailstone> hailstones) {
-		String formula = "";
-		for (int i = 0; i < 3; i++) {
-			String t = "t" + i;
-			formula += (t + " >= 0, " + hailstones.get(i).getPosition().getX() + " + " + hailstones.get(i).getVelocity().getX() + t + " == x + vx " + t + ", ");
-			formula += (hailstones.get(i).getPosition().getY() + " + " + hailstones.get(i).getVelocity().getY() + t + " == y + vy " + t + ", ");
-			formula += (hailstones.get(i).getPosition().getZ() + " + " + hailstones.get(i).getVelocity().getZ() + t + " == z + vz " + t + ", ");
-		}
-		return "Solve[{" + formula.substring(0, formula.length() - 2) + "}, {x,y,z,vx,vy,vz,t0,t1,t2}]";
 	}
 }
