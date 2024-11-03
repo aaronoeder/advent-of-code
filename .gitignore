@@ -1,12 +1,13 @@
-.settings/
-target/
-.classpath
-.factorypath
-.project
-.idea
+# Mac
+**/*.DS_Store
 
-# Input files
-*.txt
+# VS Code
+.vscode
 
-# Older years
-**/days2022/*.*
+# Java
+target
+
+# JavaScript
+.env
+.next
+node_modules
