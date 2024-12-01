@@ -7,4 +7,8 @@ public abstract class AdventDay2024 extends AdventDay {
 	public AdventDay2024(int day) {
 		super(2024, day);
 	}
+
+	public AdventDay2024(int day, boolean useRealInput) {
+		super(2024, day, useRealInput);
+	}
 }

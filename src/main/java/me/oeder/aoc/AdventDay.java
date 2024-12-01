@@ -11,6 +11,11 @@ import lombok.AllArgsConstructor;
 public abstract class AdventDay {
 	private int year;
 	private int day;
+	private boolean useRealInput;
+
+	public AdventDay(int year, int day) {
+		this(year, day, true);
+	}
 	
 	public static enum Part {
 		ONE, TWO;
@@ -26,7 +31,8 @@ public abstract class AdventDay {
 	private List<String> getLines() {
 		List<String> lines = new ArrayList<>();
 		try {
-			lines.addAll(Files.readAllLines(Paths.get(String.format("src/main/resources/%d/Day%s.txt", year, String.format("%02d", day)))));
+			String suffix = useRealInput ? "" : "-example";
+			lines.addAll(Files.readAllLines(Paths.get(String.format("src/main/resources/%d/Day%s%s.txt", year, String.format("%02d", day), suffix))));
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);
