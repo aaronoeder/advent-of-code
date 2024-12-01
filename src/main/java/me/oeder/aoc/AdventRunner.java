@@ -13,7 +13,7 @@ public class AdventRunner {
 	
 	public static void main(String[] args) throws Exception {
 		if (RUN_FULL_YEAR) {
-			for (int day = 1; day <= DAY; day++) {
+			for (int day = 1; day <= 25; day++) {
 				getAdventDay(day).solve();
 			}
 		} else {

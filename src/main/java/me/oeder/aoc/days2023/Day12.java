@@ -18,16 +18,7 @@ public class Day12 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getSum(lines, Part.ONE);
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getSum(lines, Part.TWO);
-	}
-	
-	private long getSum(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		int replications = (part == Part.ONE ? 1 : 5);
 		long sum = 0;
 		for (String line : lines) {

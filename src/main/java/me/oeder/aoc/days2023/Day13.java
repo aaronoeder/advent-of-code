@@ -8,18 +8,9 @@ public class Day13 extends AdventDay2023 {
 	public Day13() {
 		super(13);
 	}
-	
+
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getSum(lines, Part.ONE);
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getSum(lines, Part.TWO);
-	}
-	
-	private int getSum(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		List<List<String>> mirrors = new ArrayList<>();
 		int mirrorsIndex = 0;
 		for (String line : lines) {

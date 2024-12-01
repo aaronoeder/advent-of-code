@@ -17,37 +17,35 @@ public class Day25 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		Set<String> vertices = new HashSet<>();
-		List<Edge> edges = new ArrayList<>();
-		
-		for (String line : lines) {
-			String[] parts = line.split(": ");
-			
-			String component = parts[0];
-			vertices.add(component);
-			
-			List<String> connections = Arrays.asList(parts[1].split(" " ));
-			for (String connection : connections) {
-				vertices.add(connection);
-				edges.add(new Edge(connection, component));
+	public Object getAnswer(List<String> lines, Part part) {
+		if (part == Part.ONE) {
+			Set<String> vertices = new HashSet<>();
+			List<Edge> edges = new ArrayList<>();
+
+			for (String line : lines) {
+				String[] parts = line.split(": ");
+
+				String component = parts[0];
+				vertices.add(component);
+
+				List<String> connections = Arrays.asList(parts[1].split(" " ));
+				for (String connection : connections) {
+					vertices.add(connection);
+					edges.add(new Edge(connection, component));
+				}
 			}
+
+			List<List<String>> groups = getGroups(vertices, edges);
+
+			int product = 1;
+			for (List<String> group : groups) {
+				product *= group.size();
+			}
+			return product;
 		}
-		
-		List<List<String>> groups = getGroups(vertices, edges);
-		
-		int product = 1;
-		for (List<String> group : groups) {
-			product *= group.size();
-		}
-		return product;
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
 		return "Merry Christmas!";
 	}
-	
+
 	@Data
 	@AllArgsConstructor
 	private class Edge {

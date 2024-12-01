@@ -16,16 +16,7 @@ public class Day19 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getAnswer(lines, Part.ONE);
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getAnswer(lines, Part.TWO);
-	}
-	
-	private long getAnswer(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		Map<String, Rule> rulesMap = new LinkedHashMap<>();
 		List<Input> inputs = new ArrayList<>();
 		

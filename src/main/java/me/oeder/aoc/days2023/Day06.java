@@ -12,18 +12,16 @@ public class Day06 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		List<Long> ways = getWays(lines, Part.ONE);
-		
-		int sum = 1;
-		for (long way : ways) {
-			sum *= way;
-		}
-		return sum;
-	}
+	public Object getAnswer(List<String> lines, Part part) {
+		if (part == Part.ONE) {
+			List<Long> ways = getWays(lines, Part.ONE);
 
-	@Override
-	public Object solvePart2(List<String> lines) {
+			int sum = 1;
+			for (long way : ways) {
+				sum *= way;
+			}
+			return sum;
+		}
 		return getWays(lines, Part.TWO).get(0);
 	}
 	

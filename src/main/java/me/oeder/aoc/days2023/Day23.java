@@ -17,16 +17,7 @@ public class Day23 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getStepCount(lines, Part.ONE);
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getStepCount(lines, Part.TWO);
-	}
-	
-	private int getStepCount(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		String[][] grid = InputUtils.loadLinesIntoGrid(lines);
 		
 		Coord start = null;

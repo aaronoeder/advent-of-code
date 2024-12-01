@@ -17,16 +17,7 @@ public class Day07 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getSum(lines, Part.ONE);
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getSum(lines, Part.TWO);
-	}
-	
-	private int getSum(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		List<Hand> hands = new ArrayList<>();
 		for (int i = 0; i < lines.size(); i++) {
 			String[] parts = lines.get(i).split(" ");

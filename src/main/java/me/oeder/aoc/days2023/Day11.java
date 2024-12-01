@@ -12,16 +12,7 @@ public class Day11 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getSum(lines, Part.ONE);
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getSum(lines, Part.TWO);
-	}
-	
-	private long getSum(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		List<Integer> emptyRowIndices = getEmptyRowIndices(lines);
 		List<Integer> emptyColIndices = getEmptyColIndices(lines);
 		List<Coord> coords = new ArrayList<>();

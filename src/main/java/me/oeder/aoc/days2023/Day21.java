@@ -16,16 +16,7 @@ public class Day21 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getNumberOfReachablePlots(lines, Part.ONE);
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getNumberOfReachablePlots(lines, Part.TWO);
-	}
-	
-	public long getNumberOfReachablePlots(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		String[][] grid = InputUtils.loadLinesIntoGrid(lines);
 		
 		Set<Coord> starts = new HashSet<>();

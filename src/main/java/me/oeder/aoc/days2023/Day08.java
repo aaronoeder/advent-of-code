@@ -19,16 +19,7 @@ public class Day08 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getSteps(lines, Part.ONE);
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getSteps(lines, Part.TWO);
-	}
-	
-	private long getSteps(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		String instructions = lines.get(0);
 		
 		Map<String, Node> nodeMap = new HashMap<>();

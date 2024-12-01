@@ -17,16 +17,7 @@ public class Day05 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getMin(lines, Part.ONE);
-	}
-
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getMin(lines, Part.TWO);
-	}
-	
-	private long getMin(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		String seedLine = lines.get(0);
 		String[] seedLineParts = seedLine.split(": ");
 		String[] seedStrings = seedLineParts[1].split(" ");

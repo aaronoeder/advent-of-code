@@ -16,16 +16,7 @@ public class Day10 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getAnswer(lines, Part.ONE);
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getAnswer(lines, Part.TWO);
-	}
-	
-	private int getAnswer(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		Tile[][] grid = getGrid(lines);
 		List<TileCoord> path = getPath(grid);
 		if (part == Part.ONE) {

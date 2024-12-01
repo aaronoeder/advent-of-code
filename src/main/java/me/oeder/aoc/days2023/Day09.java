@@ -11,18 +11,9 @@ public class Day09 extends AdventDay2023 {
 	public Day09() {
 		super(9);
 	}
-	
+
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getSum(lines, Part.ONE);
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getSum(lines, Part.TWO);
-	}
-	
-	private int getSum(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		int sum = 0;
 		for (String line : lines) {
 			List<Integer> nums = Arrays.asList(line.split(" ")).stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());

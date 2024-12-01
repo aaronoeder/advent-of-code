@@ -15,16 +15,7 @@ public class Day03 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getSum(lines, Part.ONE);
-	}
-
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getSum(lines, Part.TWO);
-	}
-	
-	private int getSum(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		int sum = 0;
 		
 		String[][] grid = InputUtils.loadLinesIntoGrid(lines);

@@ -19,10 +19,8 @@ public abstract class AdventDay {
 	public void solve() {
 		List<String> lines = getLines();
 		log(String.format("Year %d, Day %d", year, day));
-		log("Part 1 Solution:\n" + solvePart1(lines));
-		log("\n");
-		log("Part 2 Solution:\n" + solvePart2(lines));
-		log("\n");
+		log("Part 1 Solution:\n" + getAnswer(lines, Part.ONE));
+		log("Part 2 Solution:\n" + getAnswer(lines, Part.TWO));
 	}
 	
 	private List<String> getLines() {
@@ -36,8 +34,7 @@ public abstract class AdventDay {
 		return lines;
 	}
 	
-	public abstract Object solvePart1(List<String> lines);
-	public abstract Object solvePart2(List<String> lines);
+	public abstract Object getAnswer(List<String> lines, Part part);
 	
 	public static void log(Object obj) {
 		System.out.println(obj);

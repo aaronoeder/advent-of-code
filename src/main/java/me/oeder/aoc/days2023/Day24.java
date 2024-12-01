@@ -13,16 +13,7 @@ public class Day24 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getSum(lines, Part.ONE);
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getSum(lines, Part.TWO);
-	}
-	
-	private long getSum(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		List<Hailstone> hailstones = new ArrayList<>();
 		for (String line : lines) {
 			String[] parts = line.split(" @ ");

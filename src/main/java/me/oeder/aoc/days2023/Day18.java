@@ -16,16 +16,7 @@ public class Day18 extends AdventDay2023 {
 	}
 
 	@Override
-	public Object solvePart1(List<String> lines) {
-		return getVolume(lines, Part.ONE);
-	}
-	
-	@Override
-	public Object solvePart2(List<String> lines) {
-		return getVolume(lines, Part.TWO);
-	}
-	
-	private long getVolume(List<String> lines, Part part) {
+	public Object getAnswer(List<String> lines, Part part) {
 		Map<String, Direction> directionMapping = new HashMap<>();
 		directionMapping.put("R", Direction.E);
 		directionMapping.put("D", Direction.S);
