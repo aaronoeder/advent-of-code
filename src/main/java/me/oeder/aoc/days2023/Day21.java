@@ -17,7 +17,7 @@ public class Day21 extends AdventDay2023 {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {
-		String[][] grid = InputUtils.loadLinesIntoGrid(lines);
+		Character[][] grid = InputUtils.loadLinesIntoGrid(lines);
 		
 		Set<Coord> starts = new HashSet<>();
 		starts.add(getStartCoord(grid));
@@ -33,7 +33,7 @@ public class Day21 extends AdventDay2023 {
 				for (Direction dir : Direction.values()) {
 					Coord neighbor = new Coord(start.getRow() + dir.getRowDiff(), start.getCol() + dir.getColDiff());
 					Coord neighborInBounds = getCoordInBounds(neighbor, grid);
-					if (!grid[neighborInBounds.getRow()][neighborInBounds.getCol()].equals("#")) {
+					if (grid[neighborInBounds.getRow()][neighborInBounds.getCol()] != '#') {
 						newStarts.add(neighbor);
 					}
 				}
@@ -74,10 +74,10 @@ public class Day21 extends AdventDay2023 {
 		}
 	}
 	
-	private Coord getStartCoord(String[][] grid) {
+	private Coord getStartCoord(Character[][] grid) {
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[0].length; j++) {
-				if (grid[i][j].equals("S")) {
+				if (grid[i][j] == 'S') {
 					return new Coord(i, j);
 				}
 			}
@@ -85,7 +85,7 @@ public class Day21 extends AdventDay2023 {
 		return null;
 	}
 	
-	private Coord getCoordInBounds(Coord coord, String[][] grid) {
+	private Coord getCoordInBounds(Coord coord, Character[][] grid) {
 		int row = coord.getRow() % grid.length;
 		int col = coord.getCol() % grid[0].length;
 		if (row < 0) {

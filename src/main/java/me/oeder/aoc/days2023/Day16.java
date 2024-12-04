@@ -18,7 +18,7 @@ public class Day16 extends AdventDay2023 {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {
-		String[][] grid = InputUtils.loadLinesIntoGrid(lines);
+		Character[][] grid = InputUtils.loadLinesIntoGrid(lines);
 		
 		int max = Integer.MIN_VALUE;
 		
@@ -55,10 +55,10 @@ public class Day16 extends AdventDay2023 {
 						beam.setActive(false);
 						continue;
 					} else {
-						String val = grid[next.getRow()][next.getCol()];
-						if (val.equals(".")) {
+						char val = grid[next.getRow()][next.getCol()];
+						if (val == '.') {
 							// Do nothing
-						} else if (val.equals("/")) {
+						} else if (val == '/') {
 							if (dir == Direction.N) {
 								dir = Direction.E;
 							} else if (dir == Direction.W) {
@@ -68,7 +68,7 @@ public class Day16 extends AdventDay2023 {
 							} else if (dir == Direction.E) {
 								dir = Direction.N;
 							}
-						} else if (val.equals("\\")) {
+						} else if (val == '\\') {
 							if (dir == Direction.N) {
 								dir = Direction.W;
 							} else if (dir == Direction.W) {
@@ -78,7 +78,7 @@ public class Day16 extends AdventDay2023 {
 							} else if (dir == Direction.E) {
 								dir = Direction.S;
 							}
-						} else if (val.equals("|")) {
+						} else if (val == '|') {
 							if (dir == Direction.N) {
 								// do nothing
 							} else if (dir == Direction.W) {
@@ -100,7 +100,7 @@ public class Day16 extends AdventDay2023 {
 									newBeams.add(new Beam(next, Direction.S));
 								}
 							}
-						} else if (val.equals("-")) {
+						} else if (val == '-') {
 							if (dir == Direction.N) {
 								dir = Direction.W;
 								if (visitedSplitters.contains(next)) {
@@ -156,11 +156,11 @@ public class Day16 extends AdventDay2023 {
 		}
 	}
 	
-	private Direction getInitialDirection(String val, Direction entranceDirection) {
+	private Direction getInitialDirection(char val, Direction entranceDirection) {
 		Direction dir = entranceDirection;
-		if (val.equals(".")) {
+		if (val == '.') {
 			// Do nothing
-		} else if (val.equals("/")) {
+		} else if (val == '/') {
 			if (dir == Direction.N) {
 				dir = Direction.E;
 			} else if (dir == Direction.W) {
@@ -170,7 +170,7 @@ public class Day16 extends AdventDay2023 {
 			} else if (dir == Direction.E) {
 				dir = Direction.N;
 			}
-		} else if (val.equals("\\")) {
+		} else if (val == '\\') {
 			if (dir == Direction.N) {
 				dir = Direction.W;
 			} else if (dir == Direction.W) {
@@ -180,7 +180,7 @@ public class Day16 extends AdventDay2023 {
 			} else if (dir == Direction.E) {
 				dir = Direction.S;
 			}
-		} else if (val.equals("|")) {
+		} else if (val == '|') {
 			if (dir == Direction.N) {
 				// do nothing
 			} else if (dir == Direction.W) {
@@ -190,7 +190,7 @@ public class Day16 extends AdventDay2023 {
 			} else if (dir == Direction.E) {
 				dir = Direction.N;
 			}
-		} else if (val.equals("-")) {
+		} else if (val == '-') {
 			if (dir == Direction.N) {
 				dir = Direction.W;
 			} else if (dir == Direction.W) {

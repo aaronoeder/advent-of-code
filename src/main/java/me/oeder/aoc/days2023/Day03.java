@@ -17,8 +17,8 @@ public class Day03 extends AdventDay2023 {
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {
 		int sum = 0;
-		
-		String[][] grid = InputUtils.loadLinesIntoGrid(lines);
+
+		Character[][] grid = InputUtils.loadLinesIntoGrid(lines);
 		Map<Coord, List<Integer>> gears = new HashMap<>();
 		for (int i = 0; i < grid.length; i++) {
 			int colIndex = 0;
@@ -34,13 +34,13 @@ public class Day03 extends AdventDay2023 {
 					if (colIndex == grid.length) {
 						done = true;
 					} else {
-						char ch = grid[i][colIndex].charAt(0);
+						char ch = grid[i][colIndex];
 						if (Character.isDigit(ch)) {
 							num += ch;
 							Coord adjacentSymbolCoord = getAdjacentSymbolCoord(grid, i, colIndex);
 							if (adjacentSymbolCoord != null) {
 								isPartNumber = true;
-								if (grid[adjacentSymbolCoord.getRow()][adjacentSymbolCoord.getCol()].equals("*")) {
+								if (grid[adjacentSymbolCoord.getRow()][adjacentSymbolCoord.getCol()] == '*') {
 									gearCoord = adjacentSymbolCoord;
 								}
 							}
@@ -74,7 +74,7 @@ public class Day03 extends AdventDay2023 {
 		return sum;
 	}
 	
-	private Coord getAdjacentSymbolCoord(String[][] grid, int i, int j) {
+	private Coord getAdjacentSymbolCoord(Character[][] grid, int i, int j) {
 		for (int x = -1; x <= 1; x++) {
 			for (int y = -1; y <= 1; y++) {
 				if (x == 0 && y == 0) {
@@ -91,8 +91,7 @@ public class Day03 extends AdventDay2023 {
 		return null;
 	}
 	
-	private boolean isSymbol(String str) {
-		char c = str.charAt(0);
-		return !Character.isDigit(c) && c != '.';
+	private boolean isSymbol(char ch) {
+		return !Character.isDigit(ch) && ch != '.';
 	}
 }

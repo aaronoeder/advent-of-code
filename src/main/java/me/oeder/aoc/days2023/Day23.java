@@ -18,14 +18,14 @@ public class Day23 extends AdventDay2023 {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {
-		String[][] grid = InputUtils.loadLinesIntoGrid(lines);
+		Character[][] grid = InputUtils.loadLinesIntoGrid(lines);
 		
 		Coord start = null;
 		Coord end = null;
 		
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[0].length; j++) {
-				if (!grid[i][j].equals("#")) {
+				if (grid[i][j] != '#') {
 					Coord coord = new Coord(i, j);
 					if (i == 0) {
 						start = coord;
@@ -40,11 +40,11 @@ public class Day23 extends AdventDay2023 {
 		return getMostSteps(buildGraph(grid, part), start, end, path);
 	}
 	
-	private Map<Coord, Map<Coord, Integer>> buildGraph(String[][] grid, Part part) {
+	private Map<Coord, Map<Coord, Integer>> buildGraph(Character[][] grid, Part part) {
 		Map<Coord, Map<Coord, Integer>> graph = new ConcurrentHashMap<>();
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[0].length; j++) {
-				if (!grid[i][j].equals("#")) {
+				if (grid[i][j] != '#') {
 					Coord coord = new Coord(i, j);
 					Map<Coord, Integer> neighbors = new HashMap<>();
 					for (Coord neighbor : getNeighbors(coord, grid, part)) {
@@ -101,7 +101,7 @@ public class Day23 extends AdventDay2023 {
 		return mostSteps;
 	}
 	
-	private List<Coord> getNeighbors(Coord coord, String[][] grid, Part part) {
+	private List<Coord> getNeighbors(Coord coord, Character[][] grid, Part part) {
 		List<Coord> neighbors = new ArrayList<>();
 		for (Direction dir : Direction.values()) {
 			if (!isDirectionAllowed(coord, dir, grid, part)) {
@@ -111,7 +111,7 @@ public class Day23 extends AdventDay2023 {
 			if (neighbor.getRow() < 0 || neighbor.getRow() >= grid.length || neighbor.getCol() < 0 || neighbor.getCol() >= grid[0].length) {
 				continue;
 			}
-			if (grid[neighbor.getRow()][neighbor.getCol()].equals("#")) {
+			if (grid[neighbor.getRow()][neighbor.getCol()] == '#') {
 				continue;
 			}
 			neighbors.add(neighbor);
@@ -119,21 +119,21 @@ public class Day23 extends AdventDay2023 {
 		return neighbors;
 	}
 	
-	private boolean isDirectionAllowed(Coord coord, Direction dir, String[][] grid, Part part) {
+	private boolean isDirectionAllowed(Coord coord, Direction dir, Character[][] grid, Part part) {
 		if (part == Part.TWO) {
 			return true;
 		}
 		
-		String val = grid[coord.getRow()][coord.getCol()];
+		char val = grid[coord.getRow()][coord.getCol()];
 		switch (dir) {
 			case N:
-				return val.equals(".") || val.equals("^");
+				return val == '.' || val == '^';
 			case E:
-				return val.equals(".") || val.equals(">");
+				return val == '.' || val == '>';
 			case S:
-				return val.equals(".") || val.equals("v");
+				return val == '.' || val == 'v';
 			case W:
-				return val.equals(".") || val.equals("<");
+				return val == '.' || val == '<';
 			default:
 				return false;
 		}

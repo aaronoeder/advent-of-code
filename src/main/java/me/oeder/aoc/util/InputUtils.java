@@ -5,12 +5,12 @@ import java.util.List;
 public final class InputUtils {
 	private InputUtils() {}
 	
-	public static String[][] loadLinesIntoGrid(List<String> lines) {
-		String[][] grid = new String[lines.size()][lines.get(0).length()];
+	public static Character[][] loadLinesIntoGrid(List<String> lines) {
+		Character[][] grid = new Character[lines.size()][lines.get(0).length()];
 		for (int i = 0; i < lines.size(); i++) {
 			String line = lines.get(i);
 			for (int j = 0; j < line.length(); j++) {
-				grid[i][j] = line.substring(j, j + 1);
+				grid[i][j] = line.charAt(j);
 			}
 		}
 		return grid;

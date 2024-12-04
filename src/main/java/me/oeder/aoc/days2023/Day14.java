@@ -15,11 +15,11 @@ public class Day14 extends AdventDay2023 {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {
-		String[][] grid = InputUtils.loadLinesIntoGrid(lines);
+		Character[][] grid = InputUtils.loadLinesIntoGrid(lines);
 		if (part == Part.ONE) {
 			tiltGrid(grid, Direction.N);
 		} else if (part == Part.TWO) {
-			String[][] copy = getDeepCopyOfGrid(grid);
+			Character[][] copy = getDeepCopyOfGrid(grid);
 			Map<String, Long> seen = new HashMap<>();
 			long currentCycle = 1;
 			long cycleLength = -1;
@@ -48,8 +48,8 @@ public class Day14 extends AdventDay2023 {
 		return getLoadOfGrid(grid);
 	}
 	
-	private String[][] getDeepCopyOfGrid(String[][] grid) {
-		String[][] deepCopy = new String[grid.length][grid[0].length];
+	private Character[][] getDeepCopyOfGrid(Character[][] grid) {
+		Character[][] deepCopy = new Character[grid.length][grid[0].length];
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[0].length; j++) {
 				deepCopy[i][j] = grid[i][j];
@@ -58,7 +58,7 @@ public class Day14 extends AdventDay2023 {
 		return deepCopy;
 	}
 	
-	private String stringifyGrid(String[][] grid) {
+	private String stringifyGrid(Character[][] grid) {
 		String s = "";
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[0].length; j++) {
@@ -68,7 +68,7 @@ public class Day14 extends AdventDay2023 {
 		return s;
 	}
 	
-	private void tiltGrid(String[][] grid, Direction dir) {
+	private void tiltGrid(Character[][] grid, Direction dir) {
 		if (dir == Direction.N || dir == Direction.W) {
 			for (int i = 0; i < grid.length; i++) {
 				for (int j = 0; j < grid[0].length; j++) {
@@ -84,9 +84,9 @@ public class Day14 extends AdventDay2023 {
 		}
 	}
 	
-	private void tiltElementInGrid(String[][] grid, int i, int j, Direction dir) {
-		String val = grid[i][j];
-		if (val.equals("O")) {
+	private void tiltElementInGrid(Character[][] grid, int i, int j, Direction dir) {
+		char val = grid[i][j];
+		if (val == 'O') {
 			int r = i;
 			int c = j;
 			int lastValidRow = r;
@@ -98,10 +98,10 @@ public class Day14 extends AdventDay2023 {
 				r += dir.getRowDiff();
 				c += dir.getColDiff();
 				while (true) {
-					if (grid[r][c].equals(".")) {
+					if (grid[r][c] == '.') {
 						lastValidRow = r;
 						lastValidCol = c;
-					} else if (grid[r][c].equals("O") || grid[r][c].equals("#")) {
+					} else if (grid[r][c] == 'O' || grid[r][c] == '#') {
 						break;
 					}
 					
@@ -115,17 +115,17 @@ public class Day14 extends AdventDay2023 {
 			}
 			
 			if (lastValidRow != i || lastValidCol != j) {
-				grid[lastValidRow][lastValidCol] = "O";
-				grid[i][j] = ".";
+				grid[lastValidRow][lastValidCol] = 'O';
+				grid[i][j] = '.';
 			}
 		}
 	}
 	
-	private int getLoadOfGrid(String[][] grid) {
+	private int getLoadOfGrid(Character[][] grid) {
 		int load = 0;
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[0].length; j++) {
-				if (grid[i][j].equals("O")) {
+				if (grid[i][j] == 'O') {
 					load += (grid.length - i);
 				}
 			}
