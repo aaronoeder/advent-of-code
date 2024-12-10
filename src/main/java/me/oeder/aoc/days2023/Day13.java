@@ -3,11 +3,9 @@ package me.oeder.aoc.days2023;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day13 extends AdventDay2023 {
+import me.oeder.aoc.AdventDay;
 
-	public Day13() {
-		super(13);
-	}
+public class Day13 extends AdventDay {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {

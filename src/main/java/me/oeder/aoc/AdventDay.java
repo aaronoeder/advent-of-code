@@ -5,34 +5,28 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
-@AllArgsConstructor
 public abstract class AdventDay {
-	private int year;
-	private int day;
-	private boolean useRealInput;
 
-	public AdventDay(int year, int day) {
-		this(year, day, true);
-	}
-	
+	private String year = StringUtils.substringAfter(getClass().getPackageName(), "days");
+	private String day = getClass().getSimpleName().replace("Day", "");
+
 	public static enum Part {
 		ONE, TWO;
 	}
 	
-	public void solve() {
-		List<String> lines = getLines();
-		log(String.format("Year %d, Day %d", year, day));
+	public void solve(boolean example) {
+		List<String> lines = getLines(example);
+		log(String.format("Year %s, Day %s", year, day));
 		log("Part 1 Solution:\n" + getAnswer(lines, Part.ONE));
 		log("Part 2 Solution:\n" + getAnswer(lines, Part.TWO));
 	}
 	
-	private List<String> getLines() {
+	private List<String> getLines(boolean example) {
 		List<String> lines = new ArrayList<>();
 		try {
-			String suffix = useRealInput ? "" : "-example";
-			lines.addAll(Files.readAllLines(Paths.get(String.format("src/main/resources/%d/Day%s%s.txt", year, String.format("%02d", day), suffix))));
+			lines.addAll(Files.readAllLines(Paths.get(String.format("src/main/resources/%s/Day%s.txt", year, day + (example ? "-example" : "")))));
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);

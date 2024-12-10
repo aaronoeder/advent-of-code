@@ -5,14 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import me.oeder.aoc.AdventDay;
 import me.oeder.aoc.common.Coord;
 import me.oeder.aoc.util.InputUtils;
 
-public class Day03 extends AdventDay2023 {
-	
-	public Day03() {
-		super(3);
-	}
+public class Day03 extends AdventDay {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {

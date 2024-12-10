@@ -7,13 +7,10 @@ import java.util.List;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import me.oeder.aoc.AdventDay;
 import me.oeder.aoc.common.Coord;
 
-public class Day10 extends AdventDay2023 {
-	
-	public Day10() {
-		super(10);
-	}
+public class Day10 extends AdventDay {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {

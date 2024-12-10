@@ -5,11 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Day07 extends AdventDay2024 {
+import me.oeder.aoc.AdventDay;
 
-    public Day07() {
-        super(7);
-    }
+public class Day07 extends AdventDay {
 
     @Override
     public Object getAnswer(List<String> lines, Part part) {

@@ -6,15 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import me.oeder.aoc.AdventDay;
 import me.oeder.aoc.common.Coord;
 import me.oeder.aoc.common.Direction;
 import me.oeder.aoc.util.InputUtils;
 
-public class Day23 extends AdventDay2023 {
-	
-	public Day23() {
-		super(23);
-	}
+public class Day23 extends AdventDay {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {

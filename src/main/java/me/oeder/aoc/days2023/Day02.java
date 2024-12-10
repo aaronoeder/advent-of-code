@@ -2,11 +2,9 @@ package me.oeder.aoc.days2023;
 
 import java.util.List;
 
-public class Day02 extends AdventDay2023 {
+import me.oeder.aoc.AdventDay;
 
-	public Day02() {
-		super(2);
-	}
+public class Day02 extends AdventDay {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {

@@ -6,11 +6,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Day09 extends AdventDay2023 {
-	
-	public Day09() {
-		super(9);
-	}
+import me.oeder.aoc.AdventDay;
+
+public class Day09 extends AdventDay {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {

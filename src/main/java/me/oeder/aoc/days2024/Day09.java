@@ -5,13 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Day09 extends AdventDay2024 {
+import me.oeder.aoc.AdventDay;
+
+public class Day09 extends AdventDay {
 
     private static final int SPACE = -1;
-
-    public Day09() {
-        super(9);
-    }
 
     @Override
     public Object getAnswer(List<String> lines, Part part) {

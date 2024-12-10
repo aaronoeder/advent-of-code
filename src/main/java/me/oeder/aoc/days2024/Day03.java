@@ -4,11 +4,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Day03 extends AdventDay2024 {
+import me.oeder.aoc.AdventDay;
 
-    public Day03() {
-        super(3);
-    }
+public class Day03 extends AdventDay {
 
     @Override
     public Object getAnswer(List<String> lines, Part part) {

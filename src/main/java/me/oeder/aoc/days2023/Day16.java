@@ -6,15 +6,12 @@ import java.util.List;
 import java.util.Set;
 
 import lombok.Data;
+import me.oeder.aoc.AdventDay;
 import me.oeder.aoc.common.Coord;
 import me.oeder.aoc.common.Direction;
 import me.oeder.aoc.util.InputUtils;
 
-public class Day16 extends AdventDay2023 {
-	
-	public Day16() {
-		super(16);
-	}
+public class Day16 extends AdventDay {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {

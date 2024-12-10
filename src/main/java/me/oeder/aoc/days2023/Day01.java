@@ -4,11 +4,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Day01 extends AdventDay2023 {
+import me.oeder.aoc.AdventDay;
 
-	public Day01() {
-		super(1);
-	}
+public class Day01 extends AdventDay {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {

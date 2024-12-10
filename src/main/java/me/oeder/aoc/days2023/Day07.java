@@ -9,12 +9,9 @@ import java.util.Map;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import me.oeder.aoc.AdventDay;
 
-public class Day07 extends AdventDay2023 {
-	
-	public Day07() {
-		super(7);
-	}
+public class Day07 extends AdventDay {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {

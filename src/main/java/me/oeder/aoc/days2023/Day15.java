@@ -5,11 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Day15 extends AdventDay2023 {
-	
-	public Day15() {
-		super(15);
-	}
+import me.oeder.aoc.AdventDay;
+
+public class Day15 extends AdventDay {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {

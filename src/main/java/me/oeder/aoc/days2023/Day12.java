@@ -10,12 +10,9 @@ import java.util.stream.Collectors;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import me.oeder.aoc.AdventDay;
 
-public class Day12 extends AdventDay2023 {
-
-	public Day12() {
-		super(12);
-	}
+public class Day12 extends AdventDay {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {

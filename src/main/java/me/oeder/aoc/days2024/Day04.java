@@ -1,14 +1,11 @@
 package me.oeder.aoc.days2024;
 
+import me.oeder.aoc.AdventDay;
 import me.oeder.aoc.util.InputUtils;
 
 import java.util.List;
 
-public class Day04 extends AdventDay2024 {
-
-    public Day04() {
-        super(4);
-    }
+public class Day04 extends AdventDay {
 
     @Override
     public Object getAnswer(List<String> lines, Part part) {

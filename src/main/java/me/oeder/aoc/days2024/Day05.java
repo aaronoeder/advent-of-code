@@ -2,6 +2,7 @@ package me.oeder.aoc.days2024;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import me.oeder.aoc.AdventDay;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,11 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Day05 extends AdventDay2024 {
-
-    public Day05() {
-        super(5);
-    }
+public class Day05 extends AdventDay {
 
     @Override
     public Object getAnswer(List<String> lines, Part part) {

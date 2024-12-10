@@ -8,14 +8,11 @@ import java.util.Queue;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import me.oeder.aoc.AdventDay;
 import me.oeder.aoc.common.Coord;
 import me.oeder.aoc.common.Direction;
 
-public class Day17 extends AdventDay2023 {
-	
-	public Day17() {
-		super(17);
-	}
+public class Day17 extends AdventDay {
 
 	@Override
 	public Object getAnswer(List<String> lines, Part part) {
