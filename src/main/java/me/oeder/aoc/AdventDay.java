@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public abstract class AdventDay {
 
-	private String year = StringUtils.substringAfter(getClass().getPackageName(), "days");
+	private String year = StringUtils.substringAfter(getClass().getPackage().getName(), "days");
 	private String day = getClass().getSimpleName().replace("Day", "");
 
 	public static enum Part {
