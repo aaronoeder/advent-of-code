@@ -26,6 +26,10 @@ public enum Direction {
 		return Direction.values()[(ordinal() + 1) % Direction.values().length];
 	}
 	
+	public Direction getOppositeDirection() {
+		return Direction.values()[(ordinal() + 2) % Direction.values().length];
+	}
+	
 	public Direction getDirectionToRight() {
 		return Direction.values()[(ordinal() + 3) % Direction.values().length];
 	}

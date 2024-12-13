@@ -16,6 +16,17 @@ public final class InputUtils {
 		return grid;
 	}
 	
+	public static Integer[][] loadLinesIntoIntegerGrid(List<String> lines) {
+		Integer[][] grid = new Integer[lines.size()][lines.get(0).length()];
+		for (int i = 0; i < lines.size(); i++) {
+			String line = lines.get(i);
+			for (int j = 0; j < line.length(); j++) {
+				grid[i][j] = Integer.parseInt(line.substring(j, j + 1));
+			}
+		}
+		return grid;
+	}
+	
 	public static <T> void printGrid(T[][] grid) {
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[0].length; j++) {

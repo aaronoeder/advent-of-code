@@ -50,4 +50,22 @@ public final class DFS {
 			traverseGraph(grid, visited, neighbor, end, includeDiagonalNeighbors, isValidNeighbor);
 		}
 	}
+
+	public static <T> void traverseGraph(Graph graph, Set<Node> visited, Node cur, Node end, BiPredicate<Node, Node> isValidNeighbor) {
+		visited.add(cur);
+
+		if (end != null && cur.equals(end)) {
+			return;
+		}
+
+		for (Node neighbor : cur.getAdjacentNodes().keySet()) {
+			if (visited.contains(neighbor)) {
+				continue;
+			}
+			if (!isValidNeighbor.test(cur, neighbor)) {
+				continue;
+			}
+			traverseGraph(graph, visited, neighbor, end, isValidNeighbor);
+		}
+	}
 }
