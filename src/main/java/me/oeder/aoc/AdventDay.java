@@ -5,33 +5,42 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
-
 public abstract class AdventDay {
 
-	private String year = StringUtils.substringAfter(getClass().getPackage().getName(), "days");
+	private String year = getClass().getPackage().getName().split("days")[1];
 	private String day = getClass().getSimpleName().replace("Day", "");
 
 	public static enum Part {
 		ONE, TWO;
 	}
 	
-	public void solve(boolean example) {
-		List<String> lines = getLines(example);
+	public void solve(boolean useExample, boolean useTimer) {
+		List<String> lines = getLines(useExample);
 		log(String.format("Year %s, Day %s", year, day));
-		log("Part 1 Solution:\n" + getAnswer(lines, Part.ONE));
-		log("Part 2 Solution:\n" + getAnswer(lines, Part.TWO));
+		logAnswer(useTimer, lines, Part.ONE);
+		logAnswer(useTimer, lines, Part.TWO);
 	}
 	
-	private List<String> getLines(boolean example) {
+	private List<String> getLines(boolean useExample) {
 		List<String> lines = new ArrayList<>();
 		try {
-			lines.addAll(Files.readAllLines(Paths.get(String.format("src/main/resources/%s/Day%s.txt", year, day + (example ? "-example" : "")))));
+			lines.addAll(Files.readAllLines(Paths.get(String.format("src/main/resources/%s/Day%s.txt", year, day + (useExample ? "-example" : "")))));
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);
 		}
 		return lines;
+	}
+
+	public void logAnswer(boolean useTimer, List<String> lines, Part part) {
+		if (!useTimer) {
+			log(String.format("Part %d Solution:\n%s", part.ordinal() + 1, getAnswer(lines, part)));
+		} else {
+			long start = System.currentTimeMillis();
+			Object answer = getAnswer(lines, part);
+			long end = System.currentTimeMillis();
+			log(String.format("Part %d Solution (%d ms):\n%s", part.ordinal() + 1, end - start, answer));
+		}
 	}
 	
 	public abstract Object getAnswer(List<String> lines, Part part);
