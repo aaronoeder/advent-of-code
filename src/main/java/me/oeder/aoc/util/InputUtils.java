@@ -8,6 +8,16 @@ import java.util.regex.Pattern;
 public final class InputUtils {
 	private InputUtils() {}
 
+	public static List<Long> getLongNums(String str) {
+		List<Long> nums = new ArrayList<>();
+		Pattern pattern = Pattern.compile("-?\\d+");
+		Matcher matcher = pattern.matcher(str);
+		while (matcher.find()) {
+			nums.add(Long.parseLong(matcher.group()));
+		}
+		return nums;
+	}
+
 	public static List<Integer> getNums(String str) {
 		List<Integer> nums = new ArrayList<>();
 		Pattern pattern = Pattern.compile("-?\\d+");
