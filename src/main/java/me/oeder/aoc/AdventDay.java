@@ -18,7 +18,9 @@ public abstract class AdventDay {
 		List<String> lines = getLines(useExample);
 		log(String.format("Year %s, Day %s", year, day));
 		logAnswer(useTimer, lines, Part.ONE);
-		logAnswer(useTimer, lines, Part.TWO);
+		if (Integer.parseInt(day) < 25) {
+			logAnswer(useTimer, lines, Part.TWO);
+		}
 	}
 	
 	private List<String> getLines(boolean useExample) {
