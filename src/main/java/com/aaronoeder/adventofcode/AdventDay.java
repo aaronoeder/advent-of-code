@@ -34,11 +34,6 @@ public abstract class AdventDay {
 			log(String.format("Part %d Solution (%d ms):\n%s", part.ordinal() + 1, end - start, answer));
 		}
 	}
-
-	public Object solvePart(Part part) {
-		List<String> lines = getLines(false);
-		return getAnswer(lines, part);
-	}
 	
 	private List<String> getLines(boolean useExample) {
 		List<String> lines = new ArrayList<>();
