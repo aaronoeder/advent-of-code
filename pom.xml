@@ -29,5 +29,12 @@
             <artifactId>commons-text</artifactId>
             <version>1.14.0</version>
         </dependency>
+
+        <!-- Z3 -->
+        <dependency>
+            <groupId>tools.aqua</groupId>
+            <artifactId>z3-turnkey</artifactId>
+            <version>4.14.1</version>
+        </dependency>
     </dependencies>
 </project>
