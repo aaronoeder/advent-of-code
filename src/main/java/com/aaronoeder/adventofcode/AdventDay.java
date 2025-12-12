@@ -19,7 +19,7 @@ public abstract class AdventDay {
 		List<String> lines = getLines(useExample);
 		log(String.format("Year %s, Day %s", year, day));
 		logAnswer(useTimer, lines, Part.ONE);
-		if (Integer.parseInt(day) < 25) {
+		if ((Integer.parseInt(year) < 2025 && Integer.parseInt(day) < 25) || (Integer.parseInt(year) >= 2025 && Integer.parseInt(day) < 12)) {
 			logAnswer(useTimer, lines, Part.TWO);
 		}
 	}
